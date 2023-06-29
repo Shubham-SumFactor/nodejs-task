@@ -21,3 +21,15 @@ export const connectNodeDatabase = () => {
         }
     })
 } 
+
+export const executeQuery = (sqlQuery: string) => {
+    return new Promise((resolve, reject) => {
+        connection.query(sqlQuery, (error, response) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(response);
+            }
+        });
+    });
+};
